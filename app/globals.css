@@ -42,7 +42,7 @@ body {
 }
 .hr-line{
   position: relative;
-  display: block;
+  /* display: block; */
   &::after, &::before{
     content: "";
     position: absolute;

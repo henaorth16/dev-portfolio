@@ -27,7 +27,7 @@ export default function Header() {
               Contact
             </button>
           </li>
-          <li className="hidden md:inline">Contact</li>
+          <li className="hover:text-black cursor-pointer hidden md:inline">Contact</li>
         </ul>
       </div>
     </nav>
