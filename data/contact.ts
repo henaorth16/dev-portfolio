@@ -1,4 +1,10 @@
-export const socialLinks = [
+export type SocialLink = {
+  platform: string;
+  url: string;
+  icon: string;
+};
+
+export const socialLinks: SocialLink[] = [
     { platform: "GitHub", url: "https://github.com/example", icon: "🐙" },
     {
       platform: "LinkedIn",

@@ -1,34 +1,50 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fefefe;
-  --foreground: #151515;
+  --background: #fdfdfd;
+  --foreground: #111111;
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --border: #e5e7eb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #ffffff;
+    --primary-foreground: #000000;
+    --muted: #1f2937;
+    --muted-foreground: #9ca3af;
+    --border: #374151;
   }
-}
+} */
 
 body {
-  background: var(--background) #fefefe;
-  color: var(--foreground ) black;
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 } 
 .pattern-bg {
-  background-color: #fefefe;
+  background-color: var(--background);
   position: relative;
   opacity: 1;
-  background-image: radial-gradient(#8b8b8b 3px, #f6f6f6 3px);
+  background-image: radial-gradient(var(--muted-foreground) 2px, transparent 2px);
   background-size: 30px 30px;
 }
 .pattern-bg::after{
@@ -37,8 +53,8 @@ body {
   width: 100%;
   height: 100%;
   inset: 0;
-  background: linear-gradient(transparent, rgb(247, 247, 247));
-  background-blend-mode: color-burn;
+  background: linear-gradient(transparent, var(--background));
+  background-blend-mode: normal;
 }
 .hr-line{
   position: relative;
@@ -46,10 +62,10 @@ body {
   &::after, &::before{
     content: "";
     position: absolute;
-    width: 12px;
-    height: 12px;
-    background-color: rgb(69, 69, 69);
-    top: -5px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--foreground);
+    top: -4px;
     border-radius: 50%;
   }
   &::after{

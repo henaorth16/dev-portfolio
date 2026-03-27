@@ -1,5 +1,32 @@
-export const aboutData = {
+export type ProcessStep = {
+  fcol: string;
+  scol: string;
+};
+
+export type WorkExperience = {
+  fcol: string;
+  scol: {
+    type: string;
+    dateInterval: string;
+  };
+};
+
+export type AboutData = {
+  mainTitle: string;
+  description: string;
+  stats: {
+    years: number;
+    projects: number;
+    satisfied: number;
+    industries: number;
+  };
+  process: ProcessStep[];
+  work_experience: WorkExperience[];
+};
+
+export const aboutData: AboutData = {
   mainTitle: "About me",
+  description: "I'm Dawit Tesfaye From love of visuals to career in digital design. I've grown through hands on projects crafting brands and interfaces.",
   stats: {
     years: 3,
     projects: 14,

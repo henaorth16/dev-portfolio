@@ -25,19 +25,19 @@ export default function Projects({
   return (
     <section
       id="projects"
-      className={`py-20 bg-gray-50 dark:bg-gray-800 ${className}`}
+      className={`py-20 bg-muted ${className}`}
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
           {title}
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+              className="bg-background rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-border"
             >
-              <div className="relative h-48">
+              <div className="relative h-48 bg-muted">
                 <Image
                   src={project.imageSrc}
                   alt={project.title}
@@ -46,17 +46,17 @@ export default function Projects({
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                <h3 className="text-xl font-semibold text-foreground mb-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                <p className="text-muted-foreground mb-4">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm"
+                      className="bg-muted text-muted-foreground px-2 py-1 rounded text-sm hover:bg-muted-foreground/20 transition-colors"
                     >
                       {tech}
                     </span>
@@ -66,7 +66,7 @@ export default function Projects({
                   {project.liveUrl && (
                     <Link
                       href={project.liveUrl}
-                      className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
+                      className="text-primary hover:text-primary/80 font-medium"
                     >
                       Live Demo
                     </Link>
@@ -74,7 +74,7 @@ export default function Projects({
                   {project.githubUrl && (
                     <Link
                       href={project.githubUrl}
-                      className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300 font-medium"
+                      className="text-muted-foreground hover:text-foreground font-medium"
                     >
                       GitHub
                     </Link>

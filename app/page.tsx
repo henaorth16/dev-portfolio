@@ -10,7 +10,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <Hero {...hero} />
       <About/>
       <Projects title="My Projects" projects={projects} />

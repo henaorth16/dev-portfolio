@@ -1,4 +1,14 @@
-export const projects = [
+export type Project = {
+  id: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  technologies: string[];
+  liveUrl: string;
+  githubUrl: string;
+};
+
+export const projects: Project[] = [
     {
       id: "1",
       title: "E-commerce Platform",

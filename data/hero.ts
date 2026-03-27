@@ -1,5 +1,5 @@
 
-type heroData = {
+export type HeroData = {
   name: string;
   mainTitle: string;
   paragraph: string;
@@ -13,7 +13,7 @@ type heroData = {
   };
 };
 
-export const hero:heroData =  {
+export const hero: HeroData =  {
     name: "DAWIT",
     mainTitle: "Product And UI/UX [newline] Designer.",
     paragraph: "Dawit is a product and UI/UX designer focused on turning complex ideas into simple, user centered digital products.",
