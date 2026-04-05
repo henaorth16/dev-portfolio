@@ -8,7 +8,7 @@ interface FooterProps {
 
 export default function Footer({ name, year, className = "" }: FooterProps) {
   const currentYear = year || new Date().getFullYear();
-  const userName = name || "Dawit";
+  const userName = name || "John";
 
   return (
     <footer className={` pt-20 pb-10 px-8 ${className}`}>
@@ -20,10 +20,10 @@ export default function Footer({ name, year, className = "" }: FooterProps) {
             <p className="text-sm">+251 936 978 748</p>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <a href="#" className="border border-primary/20 rounded-full px-5 py-2 text-sm hover:bg-primary hover:text-primary transition">Telegram</a>
-            <a href="#" className="border border-primary/20 rounded-full px-5 py-2 text-sm hover:bg-primary hover:text-primary transition">Instagram</a>
-            <a href="#" className="border border-primary/20 rounded-full px-5 py-2 text-sm hover:bg-primary hover:text-primary transition">LinkedIn</a>
-            <a href="#" className="border border-primary/20 rounded-full px-5 py-2 text-sm hover:bg-primary hover:text-primary transition">Facebook</a>
+            <a href="#" className="border border-primary/20 rounded-full px-5 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition">Telegram</a>
+            <a href="#" className="border border-primary/20 rounded-full px-5 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition">Instagram</a>
+            <a href="#" className="border border-primary/20 rounded-full px-5 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition">LinkedIn</a>
+            <a href="#" className="border border-primary/20 rounded-full px-5 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition">Facebook</a>
           </div>
         </div>
 

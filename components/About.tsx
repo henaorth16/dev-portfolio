@@ -1,7 +1,7 @@
 "use client"
 import React, {useState, useEffect} from "react";
 import { aboutData } from "@/data";
-
+import CountUp from 'react-countup';
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false)
@@ -60,7 +60,7 @@ export default function About() {
         <div className="flex flex-col max-w-2xl mx-auto">
           <div className="w-full flex justify-center">
             <img
-              src="/about-portrait.jpg" // replace with your image
+              src="/about-portrait.jpg" 
               alt="profile"
               className="object-cover bg-muted"
             />
@@ -69,25 +69,25 @@ export default function About() {
           <div className="grid grid-cols-4 text-center text-foreground/90 py-3">
             <div>
               <h3 className="text-5xl font-semibold">
-                {aboutData.stats.years}
+                <CountUp end={aboutData.stats.years} enableScrollSpy={true} duration={2} />
               </h3>
               <p className="text-xs text-muted-foreground">Years of experience</p>
             </div>
             <div>
               <h3 className="text-5xl font-semibold">
-                {aboutData.stats.projects}+
+                <CountUp end={aboutData.stats.projects} enableScrollSpy={true} duration={2} /> +
               </h3>
               <p className="text-xs text-muted-foreground">Projects completed</p>
             </div>
             <div>
               <h3 className="text-5xl font-semibold">
-                {aboutData.stats.satisfied}%
+                <CountUp end={aboutData.stats.satisfied} enableScrollSpy={true} duration={2} />%
               </h3>
               <p className="text-xs text-muted-foreground">Satisfied Client</p>
             </div>
             <div>
               <h3 className="text-5xl font-semibold">
-                {aboutData.stats.industries}+
+                <CountUp end={aboutData.stats.industries} enableScrollSpy={true} duration={2} />+
               </h3>
               <p className="text-xs text-muted-foreground">Industries Served</p>
             </div>

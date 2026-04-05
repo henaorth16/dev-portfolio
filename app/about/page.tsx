@@ -1,9 +1,9 @@
 "use client"
-import React, { useEffect, useState } from 'react';
-import Header from '@/components/Header';
+import { useEffect, useState } from 'react';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import { aboutData } from '@/data/about';
+import CountUp from 'react-countup';
 
 export default function AboutPage() {
     const [isVisible, setIsVisible] = useState(false)
@@ -49,26 +49,26 @@ export default function AboutPage() {
           {/* Stats */}
           <div className="grid grid-cols-4 text-center text-foreground/90 py-3">
             <div>
-              <h3 className="text-2xl md:text-5xl font-semibold">
-                {aboutData.stats.years}
+              <h3 className="text-5xl font-semibold">
+                <CountUp end={aboutData.stats.years} enableScrollSpy={true} duration={2} />
               </h3>
               <p className="text-xs text-muted-foreground">Years of experience</p>
             </div>
             <div>
-              <h3 className="text-2xl md:text-5xl font-semibold">
-                {aboutData.stats.projects}+
+              <h3 className="text-5xl font-semibold">
+                <CountUp end={aboutData.stats.projects} enableScrollSpy={true} duration={2} /> +
               </h3>
               <p className="text-xs text-muted-foreground">Projects completed</p>
             </div>
             <div>
-              <h3 className="text-2xl md:text-5xl font-semibold">
-                {aboutData.stats.satisfied}%
+              <h3 className="text-5xl font-semibold">
+                <CountUp end={aboutData.stats.satisfied} enableScrollSpy={true} duration={2} />%
               </h3>
               <p className="text-xs text-muted-foreground">Satisfied Client</p>
             </div>
             <div>
-              <h3 className="text-2xl md:text-5xl font-semibold">
-                {aboutData.stats.industries}+
+              <h3 className="text-5xl font-semibold">
+                <CountUp end={aboutData.stats.industries} enableScrollSpy={true} duration={2} />+
               </h3>
               <p className="text-xs text-muted-foreground">Industries Served</p>
             </div>
@@ -157,7 +157,6 @@ export default function AboutPage() {
 
       {/* Reusable Pre-footer Contact & Footer */}
       <Contact />
-      <Footer />
     </div>
   );
 }

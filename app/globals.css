@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fdfdfd;
+  --background: #fcfcfc;
   --foreground: #111111;
   --primary: #000000;
   --primary-foreground: #ffffff;
@@ -44,7 +44,7 @@ body {
   background-color: var(--background);
   position: relative;
   opacity: 1;
-  background-image: radial-gradient(var(--muted-foreground) 2px, transparent 2px);
+  background-image: radial-gradient(#bbb 2px, transparent 2px);
   background-size: 30px 30px;
 }
 .pattern-bg::after{

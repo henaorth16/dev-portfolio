@@ -2,7 +2,7 @@
 export default function Header() {
   return (
     <nav className="w-full md:h-22.5 bg-muted">
-      <div className="max-w-7xl  mx-auto flex items-center justify-between px-8 py-4">
+      <div className="max-w-7xl  mx-auto flex items-center justify-between px-4 md:px-8 py-4">
         {/* Left - Logo + Text */}
         <div className="flex items-center gap-3">
           <img src="/logo-icon.png" alt="logo" className="w-10 h-10" />
