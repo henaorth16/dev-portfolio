@@ -131,7 +131,7 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
                 <div className="order-2 md:order-1">
                   <p className="text-xl md:text-2xl font-light text-foreground/80 leading-relaxed">{block.text}</p>
                 </div>
-                <div className="w-full bg-muted min-h-[400px] order-1 md:order-2">
+                <div className="order-1 md:order-2 w-full bg-muted min-h-[400px]">
                   {block.image && <img src={block.image} className="w-full object-cover h-full" alt="Content right" />}
                 </div>
               </div>

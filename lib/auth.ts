@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+// auth middleware for admin panel
 
 export async function checkAdminAuth() {
   const cookieStore = await cookies();
