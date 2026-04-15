@@ -6,6 +6,15 @@ export type Project = {
   technologies: string[];
   liveUrl: string;
   githubUrl: string;
+  client?: string;
+  services?: string[];
+  productionYear?: string;
+  detailedDescription?: string;
+  contentBlocks?: {
+    type: 'text-left' | 'text-right' | 'full-image';
+    text?: string;
+    image?: string;
+  }[];
 };
 
 export const projects: Project[] = [

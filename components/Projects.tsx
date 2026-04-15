@@ -27,8 +27,8 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ title, projects: passedProje
           <button
             key={tag}
             onClick={() => setSelectedTag(tag)}
-            className={`px-4 py-2  transition ${selectedTag === tag
-              ? "font-extra bold"
+            className={`px-4 py-2 cursor-pointer transition ${selectedTag === tag
+              ? "font-extrabold"
               : "text-muted-background"
               }`}
           >
@@ -42,9 +42,7 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ title, projects: passedProje
         {filteredProjects.map(project => (
           <a
             key={project.id}
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`/project/${project.id}`}
             className="group  overflow-hidden transition"
           >
             <div className="overflow-hidden">

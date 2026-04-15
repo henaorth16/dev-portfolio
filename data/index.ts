@@ -1,3 +1,5 @@
+// the data stored in this foders are only for default. most and imporant data here can be changed from the admin panel.
+
 import { socialLinks, type SocialLink } from "./contact";
 import { projects, type Project } from "./projects";
 import { hero, type HeroData } from "./hero";

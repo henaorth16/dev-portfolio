@@ -1,32 +1,36 @@
 "use client"
-import React, {useState, useEffect} from "react";
-import { aboutData } from "@/data";
+import React, { useState, useEffect } from "react";
 import CountUp from 'react-countup';
+import { AboutData } from "@/data";
 
 export default function About() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
+  const [aboutData, setAboutData] = useState<AboutData | null>(null);
 
   function handleWindowVis() {
     if(window.scrollY >= 355){
       setIsVisible(true)
     }
-    console.log("current scroll = ", window.scrollY)
   }
+
   useEffect(() => {
-    function run() {
-      document.addEventListener("scroll", handleWindowVis)
-      console.log("hello")
-      return window.removeEventListener("scroll", handleWindowVis)
-    }
-    run()
-  }, [])
+    fetch('/api/about')
+      .then(res => res.json())
+      .then(data => setAboutData(data))
+      .catch(err => console.error(err));
+
+    document.addEventListener("scroll", handleWindowVis);
+    return () => window.removeEventListener("scroll", handleWindowVis);
+  }, []);
+
+  if (!aboutData) return <div className="text-center py-20">Loading...</div>;
 
   return (
     <section className="w-full bg-background text-foreground py-16 px-6 lg:px-28">
       <div className=" mx-auto">
         {/* Header */}
         <div className="mb-10">
-          <h2 className="text-4xl font-medium">{aboutData.mainTitle}</h2>
+          <h2 className="text-4xl font-medium">About me</h2>
 
           <div className="flex items-center mt-2"
           style={{
@@ -95,38 +99,33 @@ export default function About() {
         </div>
 
         {/*progress stats */}
-        <div className="my-10">
-          <h1 className="text-5xl text-center p-4">My Work Process</h1>
-          <p className="text-center text-lg max-w-lg mx-auto text-muted-foreground">
-            Dawit is a product and UI/UX designer focused on turning complex
-            ideas into simple, user centered digital products
-          </p>
-          <table className="w-full max-w-5xl mx-auto table-fixed mt-6 ">
-            {/* no header for this table */}
-            <tbody className="space-y-4 justify-between items-center text-foreground">
-              {aboutData.process.map((data, idx) => (
-                <tr className="border-b border-border" key={idx}>
-                  <td className="mb-6 py-2">
-                    <h3 className="text-lg">{idx + 1}</h3>
-                  </td>
-                  <td className="mb-6 py-2">
-                    <h3 className="text-lg">{data.fcol}</h3>
-                  </td>
-                  <td className="mb-6 py-2">
-                    <h3 className="text-lg text-muted-foreground">{data.scol}</h3>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <WorkExp />
+        <section className="py-12">
+          <div className="mb-16 text-center md:text-left">
+            <h2 className="text-5xl mb-6">My Work Process</h2>
+            <p className="text-muted-foreground max-w-xl text-lg mx-auto md:mx-0">
+              Dawit is a product and UI/UX designer focused on turning complex ideas into simple, user centered digital products.
+            </p>
+          </div>
+
+          <div className="flex flex-col">
+            {aboutData.process.map((step, idx) => (
+              <div key={idx} className="flex flex-col md:flex-row items-start justify-between py-3 md:py-6 border-t border-border">
+                <span className="text-muted-foreground/70 text-lg md:w-24 lg:w-[28%] mb-4 md:mb-0">0{idx + 1}</span>
+                <h3 className="text-2xl flex-1 mb-4 md:mb-0">{step.fcol}</h3>
+                <p className="text-muted-foreground max-w-md text-lg leading-relaxed">
+                  {step.scol}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+        <WorkExp aboutData={aboutData} />
       </div>
     </section>
   );
 }
 
-function WorkExp() {
+function WorkExp({ aboutData }: { aboutData: AboutData }) {
   return (
     <div className="sm:flex items-center justify-evenly mx-auto gap-12 text-foreground">
       {/* Left content*/}

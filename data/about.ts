@@ -12,7 +12,6 @@ export type WorkExperience = {
 };
 
 export type AboutData = {
-  mainTitle: string;
   description: string;
   stats: {
     years: number;
@@ -25,7 +24,6 @@ export type AboutData = {
 };
 
 export const aboutData: AboutData = {
-  mainTitle: "About me",
   description: "I'm Dawit Tesfaye From love of visuals to career in digital design. I've grown through hands on projects crafting brands and interfaces.",
   stats: {
     years: 3,

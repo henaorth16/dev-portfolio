@@ -1,16 +1,22 @@
 "use client"
 import { useEffect, useState } from 'react';
-import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import { aboutData } from '@/data/about';
+import { AboutData } from '@/data/about';
 import CountUp from 'react-countup';
 
 export default function AboutPage() {
-    const [isVisible, setIsVisible] = useState(false)
+    const [isVisible, setIsVisible] = useState(false);
+    const [aboutData, setAboutData] = useState<AboutData | null>(null);
 
     useEffect(() => {
-      setIsVisible(true)
+      setIsVisible(true);
+      fetch('/api/about')
+        .then(res => res.json())
+        .then(data => setAboutData(data))
+        .catch(console.error);
     }, [isVisible])
+
+  if (!aboutData) return <div className="min-h-screen grid items-center justify-center text-2xl">Loading...</div>;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -18,7 +24,7 @@ export default function AboutPage() {
       <main className="max-w-7xl mx-auto px-6">
         {/* Hero Section */}
         <section className="mt-10">
-          <h1 className="text-[15vw] md:text-9xl tracking-tight leading-none mb-4">{aboutData.mainTitle}</h1>
+          <h1 className="text-[15vw] md:text-9xl tracking-tight leading-none mb-4">About me</h1>
 
           <div className="flex items-center mt-2"
           style={{
@@ -149,13 +155,11 @@ export default function AboutPage() {
                 <span className="text-primary-foreground/50 text-xl">Image Placeholder</span>
               </div>
             </div>
-            {/* {end of map loop} */}
           </div>
         </section>
 
       </main>
 
-      {/* Reusable Pre-footer Contact & Footer */}
       <Contact />
     </div>
   );

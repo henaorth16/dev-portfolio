@@ -23,7 +23,7 @@ export default function HeroSection({ name, mainTitle, paragraph, card1, card2 }
         {/* Left Content */}
         <div className="flex flex-col justify-between">
           <div>
-            <div className="pattern-bg md:py-12 py-32">
+            <div className="pattern-bg md:py-12 py-24">
               <h1 className="text-5xl text-black z-10 md:text-9xl font-extrabold text-center tracking-wide mb-8">
                 {name}
               </h1>
