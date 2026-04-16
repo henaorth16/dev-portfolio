@@ -9,6 +9,14 @@ export async function PUT(request: Request, props: { params: Promise<{ id: strin
     const db = await openDb();
     const { id } = await props.params;
     
+    if (!data.title || data.title.trim() === "") {
+      await db.execute({
+        sql: `DELETE FROM projects WHERE id = ?`,
+        args: [id]
+      });
+      return NextResponse.json({ success: true, deleted: true });
+    }
+
     await db.execute({
       sql: `UPDATE projects SET title = ?, description = ?, imageSrc = ?, technologies = ?, liveUrl = ?, githubUrl = ?, client = ?, services = ?, productionYear = ?, detailedDescription = ?, contentBlocks = ? WHERE id = ?`,
       args: [

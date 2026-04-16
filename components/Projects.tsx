@@ -57,7 +57,7 @@ const ProjectsSection: React.FC<ProjectsProps> = ({ title, projects: passedProje
               <h3 className="text-lg font-semibold mb-1">
                 {project.title}
               </h3>
-              <p className="text-sm text-gray-600 mb-2">{project.description}</p>
+              <p className="text-sm text-gray-600 mb-2">{project.description.split(" ").slice(0,20).join(" ")}...</p>
 
               {/* <div className="flex flex-wrap gap-2">
                  {project.technologies.map(tech => (

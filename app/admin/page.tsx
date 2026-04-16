@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import AdminDashboard from "@/components/AdminDashboard";
 
 export default async function AdminPage() {
@@ -9,7 +9,7 @@ export default async function AdminPage() {
 
   // "if the user is not admin return notfound"
   if (!adminToken || adminToken.value !== secret) {
-    notFound();
+    redirect('/login');
   }
 
   return <AdminDashboard />;

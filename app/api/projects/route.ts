@@ -31,6 +31,11 @@ export async function POST(request: Request) {
   try {
     const data = await request.json();
     const db = await openDb();
+
+    if (!data.title || data.title.trim() === "") {
+      return NextResponse.json({ error: "Title is required" }, { status: 400 });
+    }
+
     const id = data.id || Math.random().toString(36).substr(2, 9);
     
     await db.execute({

@@ -59,17 +59,28 @@ export async function PUT(request: Request) {
       ]
     });
     
-    // Simplification for process and work_experience: in a real scenario you would update specific rows or clear and insert new.
+    // Filter out rows with empty inputs for process
+    const validProcess = (data.process || []).filter((p: any) => 
+      (p.fcol && p.fcol.trim() !== "") || (p.scol && p.scol.trim() !== "")
+    );
+    
     await db.execute('DELETE FROM process');
-    for (const p of data.process || []) {
+    for (const p of validProcess) {
       await db.execute({
         sql: `INSERT INTO process (fcol, scol) VALUES (?, ?)`,
         args: [p.fcol, p.scol]
       });
     }
 
+    // Filter out rows with empty inputs for work_experience
+    const validExperience = (data.work_experience || []).filter((we: any) => 
+      (we.fcol && we.fcol.trim() !== "") || 
+      (we.scol?.type && we.scol.type.trim() !== "") || 
+      (we.scol?.dateInterval && we.scol.dateInterval.trim() !== "")
+    );
+
     await db.execute('DELETE FROM work_experience');
-    for (const we of data.work_experience || []) {
+    for (const we of validExperience) {
       await db.execute({
         sql: `INSERT INTO work_experience (fcol, type, dateInterval) VALUES (?, ?, ?)`,
         args: [we.fcol, we.scol.type, we.scol.dateInterval]
