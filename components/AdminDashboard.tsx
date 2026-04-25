@@ -18,6 +18,7 @@ export default function AdminDashboard() {
         <button onClick={() => setActiveTab("hero")} className={`text-left px-4 py-2 rounded-md transition ${activeTab === 'hero' ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}>Hero Section</button>
         <button onClick={() => setActiveTab("about")} className={`text-left px-4 py-2 rounded-md transition ${activeTab === 'about' ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}>About Info</button>
         <button onClick={() => setActiveTab("projects")} className={`text-left px-4 py-2 rounded-md transition ${activeTab === 'projects' ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}>Projects</button>
+        <button onClick={() => setActiveTab("contact-form")} className={`text-left px-4 py-2 rounded-md transition ${activeTab === 'contact-form' ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}>Contact Form</button>
         <button onClick={() => setActiveTab("contact")} className={`text-left px-4 py-2 rounded-md transition ${activeTab === 'contact' ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'}`}>Social Links</button>
         <div className="mt-auto pt-4 border-t border-border">
           <button onClick={handleLogout} className="w-full text-left px-4 py-2 rounded-md text-red-500 hover:bg-red-500/10 transition font-bold">Logout</button>
@@ -37,6 +38,7 @@ export default function AdminDashboard() {
         {activeTab === "hero" && <HeroAdmin />}
         {activeTab === "about" && <AboutAdmin />}
         {activeTab === "projects" && <ProjectsAdmin />}
+        {activeTab === "contact-form" && <ContactFormAdmin />}
         {activeTab === "contact" && <ContactAdmin />}
       </main>
     </div>
@@ -251,6 +253,50 @@ function ContactAdmin() {
       ))}
       <button onClick={() => setData([...data, { platform: "New", url: "", icon: "🌐" }])} className="border border-primary text-primary w-fit px-4 py-2 rounded-md font-bold">Add Platform</button>
       <button onClick={handleSave} className="bg-primary text-primary-foreground py-3 rounded-md font-bold mt-4 hover:opacity-90">Save Social Links</button>
+    </div>
+  );
+}
+
+// ============== CONTACT FORM ADMIN ==============
+function ContactFormAdmin() {
+  const [data, setData] = useState({ email: "", budget_options: "" });
+
+  useEffect(() => {
+    fetch('/api/contact-settings').then(r => r.json()).then(setData);
+  }, []);
+
+  const handleSave = async () => {
+    await fetch('/api/contact-settings', {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    alert("Saved Successfully");
+  };
+
+  return (
+    <div className="flex flex-col gap-6 max-w-3xl">
+      <div className="flex flex-col gap-2">
+        <label className="font-semibold">Receiving Email Address</label>
+        <input 
+          value={data.email} 
+          onChange={e => setData({ ...data, email: e.target.value })} 
+          className="p-3 bg-muted border border-border rounded-md focus:border-primary outline-none" 
+          placeholder="e.g., you@example.com"
+        />
+        <p className="text-xs text-muted-foreground">The email address where messages will be sent.</p>
+      </div>
+      <div className="flex flex-col gap-2">
+        <label className="font-semibold">Budget Options (Comma-separated)</label>
+        <input 
+          value={data.budget_options} 
+          onChange={e => setData({ ...data, budget_options: e.target.value })} 
+          className="p-3 bg-muted border border-border rounded-md focus:border-primary outline-none" 
+          placeholder="e.g., 5K-10K, 10K-20K, 30k, 40k"
+        />
+      </div>
+
+      <button onClick={handleSave} className="bg-primary text-primary-foreground py-3 rounded-md font-bold mt-4 hover:opacity-90">Save Contact Settings</button>
     </div>
   );
 }

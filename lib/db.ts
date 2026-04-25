@@ -61,6 +61,11 @@ export async function openDb() {
       url TEXT,
       icon TEXT
     );
+    CREATE TABLE IF NOT EXISTS contact_settings (
+      id INTEGER PRIMARY KEY DEFAULT 1,
+      email TEXT,
+      budget_options TEXT
+    );
   `);
 
   // Setup new columns if they are missing
@@ -112,6 +117,12 @@ export async function openDb() {
     for (const sl of socialLinks) {
       await db.execute({ sql: `INSERT INTO social_links (platform, url, icon) VALUES (?, ?, ?)`, args: [sl.platform, sl.url, sl.icon] });
     }
+
+    // Insert Default Contact Settings
+    await db.execute({
+      sql: `INSERT OR REPLACE INTO contact_settings (id, email, budget_options) VALUES (1, ?, ?)`,
+      args: ["davemak4621@gmail.com", "Not specified, 5K-10K, 10K-20K, 20K-50K, 50K+"]
+    });
   }
   
   return db;
