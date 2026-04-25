@@ -78,6 +78,10 @@ function HeroAdmin() {
         <label className="font-semibold">Paragraph</label>
         <textarea rows={4} value={data.paragraph} onChange={e => setData({ ...data, paragraph: e.target.value })} className="p-3 bg-muted border border-border rounded-md focus:border-primary outline-none" />
       </div>
+      <div className="flex flex-col gap-2">
+        <label className="font-semibold">Resume Link <span className="text-gray-500">(eg. "https://googleDriveLink" - make sure to make public access for your file)</span></label>
+        <input value={data.resumeLink || ''} onChange={e => setData({ ...data, resumeLink: e.target.value })} className="p-3 bg-muted border border-border rounded-md focus:border-primary outline-none" placeholder="https://..." />
+      </div>
 
       <div className="grid grid-cols-2 gap-4 border p-4 rounded-md">
         <h3 className="col-span-2 font-bold">Card 1</h3>

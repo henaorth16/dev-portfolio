@@ -90,7 +90,7 @@ export default function ContactForm() {
   return (
     <div className="flex flex-col items-center w-full max-w-4xl mx-auto py-1 px-4">
       {/* Header */}
-      <div className="text-center mb-16 space-y-2">
+      <div className="text-center mb-7 space-y-2">
         <p className="text-muted-foreground text-sm font-light">Contact me at</p>
         <h2 className="text-4xl md:text-5xl font-light tracking-tight text-foreground">
           {contactSettings.email}
@@ -99,12 +99,12 @@ export default function ContactForm() {
       </div>
 
       {/* Form Container */}
-      <div className="w-full bg-white border border-gray-100 rounded-[2.5rem] p-10 md:p-16 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+      <div className="w-full bg-white border border-gray-100 rounded-2xl p-10 md:p-16">
         <form className="space-y-12" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Name */}
             <div className="space-y-3">
-              <label htmlFor="name" className="text-[13px] font-bold text-foreground">
+              <label htmlFor="name" className="text-foreground">
                 Name*
               </label>
               <input
@@ -119,7 +119,7 @@ export default function ContactForm() {
             </div>
             {/* Company / Project */}
             <div className="space-y-3">
-              <label htmlFor="company" className="text-[13px] font-bold text-foreground">
+              <label htmlFor="company" className="text-foreground">
                 Company / Project
               </label>
               <input
@@ -135,7 +135,7 @@ export default function ContactForm() {
 
           {/* Email */}
           <div className="space-y-3">
-            <label htmlFor="email" className="text-[13px] font-bold text-foreground">
+            <label htmlFor="email" className="text-foreground">
               Email*
             </label>
             <input
@@ -151,7 +151,7 @@ export default function ContactForm() {
 
           {/* Subject */}
           <div className="space-y-3">
-            <label htmlFor="subject" className="text-[13px] font-bold text-foreground">
+            <label htmlFor="subject" className="text-foreground">
               Subject*
             </label>
             <input
@@ -167,7 +167,7 @@ export default function ContactForm() {
 
           {/* Budget */}
           <div className="space-y-5">
-            <label className="text-[13px] font-bold text-foreground">Budget</label>
+            <label className="text-foreground">Budget</label>
             <div className="flex flex-wrap gap-3">
               {budgetOptionsList.map((option) => (
                 <button
@@ -188,7 +188,7 @@ export default function ContactForm() {
 
           {/* Message */}
           <div className="space-y-3">
-            <label htmlFor="message" className="text-[13px] font-bold text-foreground">
+            <label htmlFor="message" className="text-foreground">
               Message*
             </label>
             <textarea

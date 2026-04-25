@@ -21,7 +21,8 @@ export async function GET() {
       card2: {
         title: row.card2Title,
         paragraph: row.card2Paragraph
-      }
+      },
+      resumeLink: row.resumeLink || ""
     };
     return NextResponse.json(heroData);
   } catch (error: any) {
@@ -36,7 +37,7 @@ export async function PUT(request: Request) {
     const db = await openDb();
     
     await db.execute({
-      sql: `UPDATE hero SET name = ?, mainTitle = ?, paragraph = ?, card1Title = ?, card1Paragraph = ?, card2Title = ?, card2Paragraph = ? WHERE id = 1`,
+      sql: `UPDATE hero SET name = ?, mainTitle = ?, paragraph = ?, card1Title = ?, card1Paragraph = ?, card2Title = ?, card2Paragraph = ?, resumeLink = ? WHERE id = 1`,
       args: [
         data.name,
         data.mainTitle,
@@ -44,7 +45,8 @@ export async function PUT(request: Request) {
         data.card1.title,
         data.card1.paragraph,
         data.card2.title,
-        data.card2.paragraph
+        data.card2.paragraph,
+        data.resumeLink
       ]
     });
     return NextResponse.json({ success: true });

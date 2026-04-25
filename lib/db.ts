@@ -34,7 +34,8 @@ export async function openDb() {
       card1Title TEXT,
       card1Paragraph TEXT,
       card2Title TEXT,
-      card2Paragraph TEXT
+      card2Paragraph TEXT,
+      resumeLink TEXT
     );
     CREATE TABLE IF NOT EXISTS about (
       id INTEGER PRIMARY KEY DEFAULT 1,
@@ -74,6 +75,7 @@ export async function openDb() {
   try { await db.execute("ALTER TABLE projects ADD COLUMN productionYear TEXT"); } catch (e) {}
   try { await db.execute("ALTER TABLE projects ADD COLUMN detailedDescription TEXT"); } catch (e) {}
   try { await db.execute("ALTER TABLE projects ADD COLUMN contentBlocks TEXT"); } catch (e) {}
+  try { await db.execute("ALTER TABLE hero ADD COLUMN resumeLink TEXT"); } catch (e) {}
 
   // Auto seed if empty
   const heroResult = await db.execute('SELECT COUNT(*) as count FROM hero');
@@ -93,8 +95,8 @@ export async function openDb() {
 
     // Insert Hero
     await db.execute({
-      sql: `INSERT OR REPLACE INTO hero (id, name, mainTitle, paragraph, card1Title, card1Paragraph, card2Title, card2Paragraph) VALUES (1, ?, ?, ?, ?, ?, ?, ?)`,
-      args: [hero.name, hero.mainTitle, hero.paragraph, hero.card1.title, hero.card1.paragraph, hero.card2.title, hero.card2.paragraph]
+      sql: `INSERT OR REPLACE INTO hero (id, name, mainTitle, paragraph, card1Title, card1Paragraph, card2Title, card2Paragraph, resumeLink) VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      args: [hero.name, hero.mainTitle, hero.paragraph, hero.card1.title, hero.card1.paragraph, hero.card2.title, hero.card2.paragraph, "https://googleDriveLink"]
     });
 
     // Insert About

@@ -11,6 +11,7 @@ export type HeroData = {
     title: string;
     paragraph: string;
   };
+  resumeLink?: string;
 };
 
 export const hero: HeroData =  {
@@ -24,5 +25,6 @@ export const hero: HeroData =  {
     card2: {
         title: "Contact",
         paragraph: "Let's Start Your Project"
-    }
+    },
+    resumeLink: "https://googleDriveLink"
 }
